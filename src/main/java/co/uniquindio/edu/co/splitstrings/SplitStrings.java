@@ -7,23 +7,6 @@ package co.uniquindio.edu.co.splitstrings;
 import java.util.Arrays;
 
 public class SplitStrings {
-
-    public static void main(String[] args) {
-
-        String cadena = "abcdefghijklmnop";
-        int [] tam = {5, 9, 2};
-        String [] segCadena = separarCadena(cadena, tam);
-        
-        for(String eachCadena : segCadena) System.out.println(eachCadena);
-
-        String [] s5 = splitString(20, 5);
-        System.out.println(Arrays.toString(s5));
-
-        String [] s6 = splitString(30, 16);
-        System.out.println(Arrays.toString(s6));
-
-        System.out.println(unirCadenas(s6));
-    }
     
     public static String unirCadenas(String [] cadenas){
         String resultado = "";
@@ -55,10 +38,14 @@ public class SplitStrings {
 
     public static String[] splitString(int tam, int n) {
         String cadena = generateString(tam);
-        String[] resultado = new String[2];
-        resultado[0] = cadena.substring(0, n);
-        resultado[1] = cadena.substring(n);
-        return resultado;
+
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < cadena.length(); i++) {
+            sb.append(cadena.charAt(i));
+            if (i % n == n - 1)
+                sb.append('-');
+        }
+        return sb.toString().split("-");
     }
 
     public static String generateString(int tam) {
@@ -75,7 +62,5 @@ public class SplitStrings {
         }
         return result;
     }
-
-
 
 }

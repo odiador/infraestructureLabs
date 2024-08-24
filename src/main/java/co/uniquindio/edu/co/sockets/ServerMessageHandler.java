@@ -5,7 +5,6 @@ import java.util.Arrays;
 import co.uniquindio.edu.co.conversiones.BinarioHexadecimal;
 import co.uniquindio.edu.co.conversiones.DecimalBinario;
 import co.uniquindio.edu.co.conversiones.DecimalHexadecimal;
-import co.uniquindio.edu.co.splitstrings.Split;
 import co.uniquindio.edu.co.splitstrings.SplitStrings;
 
 public class ServerMessageHandler {
@@ -43,14 +42,14 @@ public class ServerMessageHandler {
             // GEN-CAD 15
             if (tokens.length == 2) {
                 try {
-                    return Split.generateString(Integer.parseInt(tokens[1]));
+                    return SplitStrings.generateString(Integer.parseInt(tokens[1]));
                 } catch (NumberFormatException | IndexOutOfBoundsException e) {
                     return "GEN-CAD <integer> <integer>(optional) ";
                 }
                 // GEN-CAD 32 8
             } else if (tokens.length == 3) {
                 try {
-                    return String.join(" ",
+                    return String.join(", ",
                             SplitStrings.splitString(Integer.parseInt(tokens[1]), Integer.parseInt(tokens[2])));
                 } catch (NumberFormatException | IndexOutOfBoundsException e) {
                     return "GEN-CAD <integer> <integer>(optional) ";
