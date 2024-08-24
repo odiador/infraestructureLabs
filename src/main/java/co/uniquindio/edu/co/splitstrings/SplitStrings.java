@@ -49,6 +49,9 @@ public class SplitStrings {
         return Arrays.copyOfRange(arreglo, 0, arreglo.length-1);
     }
 
+    public static String[] generarCadena(int length, int... partes) {
+        return separarCadena(generateString(length), partes);
+    }
 
     public static String[] splitString(int tam, int n) {
         String cadena = generateString(tam);

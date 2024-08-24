@@ -28,8 +28,8 @@ public class EchoTCPServer {
 
     public void protocol(Socket socket) throws Exception {
         String message = fromNetwork.readLine();
-        System.out.println("[Server] From client: " + message);
-        String answer = message;
+		String answer = ServerMessageHandler.handleMessage(message);
+        System.out.println("[Server] From client: " + message + ", answer: " + answer);
         toNetwork.println(answer);
     }
 
